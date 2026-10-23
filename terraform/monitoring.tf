@@ -13,10 +13,9 @@ resource "azurerm_log_analytics_workspace" "main" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "france_central" {
-  name                           = "diag-cloudprogramming-frc"
-  target_resource_id             = azurerm_linux_web_app.france_central.id
-  log_analytics_workspace_id     = azurerm_log_analytics_workspace.main.id
-  log_analytics_destination_type = "Dedicated"
+  name                       = "diag-cloudprogramming-frc"
+  target_resource_id         = azurerm_linux_web_app.france_central.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
 
   enabled_log {
     category = "AppServiceHTTPLogs"
@@ -28,10 +27,9 @@ resource "azurerm_monitor_diagnostic_setting" "france_central" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "sweden_central" {
-  name                           = "diag-cloudprogramming-swc"
-  target_resource_id             = azurerm_linux_web_app.sweden_central.id
-  log_analytics_workspace_id     = azurerm_log_analytics_workspace.main.id
-  log_analytics_destination_type = "Dedicated"
+  name                       = "diag-cloudprogramming-swc"
+  target_resource_id         = azurerm_linux_web_app.sweden_central.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
 
   enabled_log {
     category = "AppServiceHTTPLogs"
