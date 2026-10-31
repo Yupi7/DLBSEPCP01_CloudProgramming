@@ -1,6 +1,6 @@
 resource "azurerm_log_analytics_workspace" "main" {
   name                = "law-cloudprogramming-${random_id.suffix.hex}"
-  location            = "France Central"
+  location            = var.france_central_location
   resource_group_name = azurerm_resource_group.main.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
@@ -14,7 +14,7 @@ resource "azurerm_log_analytics_workspace" "main" {
 
 resource "azurerm_monitor_diagnostic_setting" "france_central" {
   name                       = "diag-cloudprogramming-frc"
-  target_resource_id         = azurerm_linux_web_app.france_central.id
+  target_resource_id         = module.france_central.web_app_id
   log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
 
   enabled_log {
@@ -28,7 +28,7 @@ resource "azurerm_monitor_diagnostic_setting" "france_central" {
 
 resource "azurerm_monitor_diagnostic_setting" "sweden_central" {
   name                       = "diag-cloudprogramming-swc"
-  target_resource_id         = azurerm_linux_web_app.sweden_central.id
+  target_resource_id         = module.sweden_central.web_app_id
   log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
 
   enabled_log {

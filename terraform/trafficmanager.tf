@@ -27,11 +27,11 @@ resource "azurerm_traffic_manager_profile" "main" {
 resource "azurerm_traffic_manager_azure_endpoint" "france_central" {
   name               = "endpoint-france-central"
   profile_id         = azurerm_traffic_manager_profile.main.id
-  target_resource_id = azurerm_linux_web_app.france_central.id
+  target_resource_id = module.france_central.web_app_id
 }
 
 resource "azurerm_traffic_manager_azure_endpoint" "sweden_central" {
   name               = "endpoint-sweden-central"
   profile_id         = azurerm_traffic_manager_profile.main.id
-  target_resource_id = azurerm_linux_web_app.sweden_central.id
+  target_resource_id = module.sweden_central.web_app_id
 }
