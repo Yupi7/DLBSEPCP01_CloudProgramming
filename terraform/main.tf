@@ -1,10 +1,10 @@
 resource "azurerm_resource_group" "main" {
-  name     = "rg-cloudprogramming-dev"
-  location = "West Europe"
+  name     = var.resource_group_name
+  location = var.resource_group_location
 
   tags = {
-    project     = "Cloud Programming"
-    environment = "Development"
+    project     = var.project_name
+    environment = var.environment
     managed_by  = "Terraform"
   }
 }
